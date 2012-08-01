@@ -24,7 +24,7 @@ With the cryptographic nature of MintChip, the (conceptual) application EasyChip
 
 * We also made a demo website at https://easychip-demo.appspot.com
 
-* You may want to check the source code for [the backend server](https://github.com/Xecurity/EasyChip-server) and [the demo site](https://github.com/Xecurity/EasyChip-demo).
+* You may want to check the source code for [the backend server](https://github.com/Xecurity/EasyChip-server) and [the demo site](https://github.com/Xecurity/EasyChip-demo)
 
 
 ## Instruction
@@ -37,6 +37,9 @@ With the cryptographic nature of MintChip, the (conceptual) application EasyChip
 
 ## Our application is based on
 
-* Google Cloud Message: for time- and power-efficiency.
+* [Google Cloud Message](http://developer.android.com/guide/google/gcm/index.html) for time- and power-efficiency.
 
-* Google App Engine: for stable and secure service environment.
+* [Google App Engine](https://developers.google.com/appengine/) for stable and secure service environment, and the [Channel API](https://developers.google.com/appengine/docs/python/channel/overview) for building the demo site.
+
+* [ViewPagerIndicator](http://viewpagerindicator.com/) for a better UI of our app.
+
