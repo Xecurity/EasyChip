@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EasyChip</string>
+    <string name="intro">EasyChip and MinChip together\nmake online payments easier than ever.</string>
+    <string name="steps">\u2022 Enter your email at online shopping sites\n\n\u2022 Confirm the pending transaction in this app\n(by just one click!)\n\nThat\'s it! There is no third step.</string>
+    <string name="button_change_email">Choose Another Email</string>
+    <string name="setting_descripton">Not so many things to set up...</string>
+    <string name="paid_to">paid to&#160;</string>
+    <string name="log_entry_format">%1$s %2$s\non %3$s</string>
+</resources>

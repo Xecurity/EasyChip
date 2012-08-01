@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/account"
+              android:orientation="vertical"
+              android:gravity="left|center"
+              android:layout_height="wrap_content"
+              android:layout_width="fill_parent">
+
+    <TextView
+            android:id="@+id/entryTextView"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:padding="10sp"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:textColor="#000000"/>
+
+</LinearLayout>

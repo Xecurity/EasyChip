@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/intro_page"
+            android:orientation="vertical"
+            android:background="#ECF1F2"
+            android:layout_gravity="center_vertical|right"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+    <TextView android:id="@+id/intro"
+              android:textColor="#000000"
+              android:padding="10sp"
+              android:textSize="17sp"
+              android:textStyle="bold"
+              android:gravity="center"
+              android:layout_centerHorizontal="true"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/intro"/>
+
+    <TextView android:id="@+id/steps"
+              android:textColor="#000000"
+              android:paddingLeft="10sp"
+              android:paddingRight="10sp"
+              android:paddingBottom="50sp"
+              android:textSize="17sp"
+              android:gravity="center"
+              android:textStyle="italic"
+              android:layout_centerInParent="true"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/steps"/>
+
+
+    <TextView android:id="@+id/email"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:padding="10sp"
+              android:textSize="15sp"
+              android:textColor="#7AA7D6"
+              android:gravity="right"
+              android:layout_alignParentRight="true"
+              android:layout_alignParentBottom="true"/>
+
+
+    <TextView android:id="@+id/balance"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:padding="10sp"
+              android:textSize="15sp"
+              android:textColor="#7AA7D6"
+              android:gravity="left"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentBottom="true"
+              android:layout_above="@id/email"/>
+
+</RelativeLayout>

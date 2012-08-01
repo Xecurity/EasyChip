@@ -1,3 +1,13 @@
+*.swp
+*~
+.DS_Store
+*.iml
+*.ipr
+*.iws
+#.idea/
+.idea
+out
+
 # built application files
 *.apk
 *.ap_
