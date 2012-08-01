@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 
+
 package ca.xecure.easychip;
 
 import android.content.Context;
