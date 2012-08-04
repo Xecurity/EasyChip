@@ -1,3 +1,5 @@
+* Show a same random (short) tag/number on both of the web page and the app to let you verify whether the challenge is really from the merchant website he/she wants.
+
 * Improve the app efficiency, e.g. HTTP requests are still performed within the main UI thread (for ease of programming… and I'm new to Android programming…)
 
 * Retry when got HTTP connection errors
