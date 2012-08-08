@@ -26,6 +26,8 @@ import android.util.Log;
 import static android.accounts.AccountManager.newChooseAccountIntent;
 import static android.accounts.AccountManager.KEY_ACCOUNT_NAME;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.widget.Toast;
 import android.view.Window;
 import android.view.View;
 //import android.widget.TextView;
@@ -35,6 +37,10 @@ import com.viewpagerindicator.TitlePageIndicator;
 import com.viewpagerindicator.TitlePageIndicator.IndicatorStyle;
 import java.io.IOException;
 import java.util.HashMap;
+import java.lang.NoSuchMethodError;
+import java.lang.RuntimeException;
+
+import android.widget.EditText;
 
 import com.google.android.gcm.GCMRegistrar;
 
@@ -56,8 +62,14 @@ public class MainActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        GCMRegistrar.checkDevice(this);
-        GCMRegistrar.checkManifest(this);
+        try {
+            GCMRegistrar.checkDevice(this);
+            GCMRegistrar.checkManifest(this);
+        } catch (RuntimeException ex) {
+            Toast.makeText(this, "Cannot use Google Cloud Message!", Toast.LENGTH_LONG).show();
+
+            moveTaskToBack(true);
+        }
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -98,15 +110,25 @@ public class MainActivity extends FragmentActivity {
     }
 
     public void choose_email_address() {
-        Intent intent = newChooseAccountIntent(null, null, new String[]{"com.google"},
-                false, null, null, null, null);
-        startActivityForResult(intent, CHOOSE_EMAIL_ADDRESS);
+        Intent intent;
+        try {
+            intent = newChooseAccountIntent(null, null, new String[]{"com.google"},
+                    false, null, null, null, null);
+            startActivityForResult(intent, CHOOSE_EMAIL_ADDRESS);
+        } catch (NoSuchMethodError ex) {
+            manually_enter_email();
+        }
     }
 
     public void change_email_address(View view) {
-        Intent intent = newChooseAccountIntent(null, null, new String[]{"com.google"},
-                false, null, null, null, null);
-        startActivityForResult(intent, CHOOSE_EMAIL_ADDRESS);
+        Intent intent;
+        try {
+            intent = newChooseAccountIntent(null, null, new String[]{"com.google"},
+                    false, null, null, null, null);
+            startActivityForResult(intent, CHOOSE_EMAIL_ADDRESS);
+        } catch (NoSuchMethodError ex) {
+            manually_enter_email();
+        }
     }
 
     @Override
@@ -192,6 +214,38 @@ public class MainActivity extends FragmentActivity {
                     }
                 })
                 .setNegativeButton("No, I don't", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    public void manually_enter_email() {
+        final View form = getLayoutInflater().inflate(R.layout.emaildialog, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Enter an ID or email address")
+                .setView(form)
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        EditText email_form = (EditText) form.findViewById(R.id.email_addr);
+                        String email_addr = email_form.getText().toString();
+
+                        SharedPreferences.Editor editor = settings.edit();
+                        editor.putString(EMAIL_ADDRESS_PREF, email_addr);
+                        editor.commit();
+
+                        register_cloud_message();
+
+                        Intent intent = new Intent(UPDATE_INFO_ACTION);
+                        sendBroadcast(intent);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }

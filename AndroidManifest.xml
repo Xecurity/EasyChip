@@ -3,7 +3,7 @@
           package="ca.xecure.easychip"
           android:versionCode="1"
           android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="16"/>
+    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="16"/>
 
     <permission android:name="ca.xecure.easychip.permission.C2D_MESSAGE" android:protectionLevel="signature" />
     <uses-permission android:name="ca.xecure.easychip.permission.C2D_MESSAGE" />
